@@ -13,7 +13,7 @@ class EmailContactSiteRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,25 @@ class EmailContactSiteRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'email' => 'required | email',
+            'subject' => 'required | min:10',
+            'messageText' => 'required | min:10',
+            'g-recaptcha-response' => 'required|captcha'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'El nombre es requerido',
+            'email.required' => 'El email es requerido',
+            'email.email' => 'El email no es válido',
+            'subject.required' => 'El asunto es requerido',
+            'subject.min' => 'El asunto debe tener más de 10 caracteres',
+            'messageText.required' => 'El comentario es requerido',
+            'messageText.min' => 'El comentario debe tener más de 10 caracteres',
+            'g-recaptcha-response.required' => 'El captcha es requerido',
         ];
     }
 }

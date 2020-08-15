@@ -11,14 +11,11 @@ class MessageClientToCommerce extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $commerce;
+
+    public function __construct(Commerce $commerce)
     {
-        //
+        $this->commerce = $commerce;
     }
 
     /**
@@ -28,6 +25,8 @@ class MessageClientToCommerce extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('emails.MessageClientToCommerce')
+            ->subject('Mensaje en GuíaCelíaca')
+            ->from('no-responder@guiaceliaca.com.ar');
     }
 }

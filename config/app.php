@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -165,6 +165,11 @@ return [
         /*
          * Package Service Providers...
          */
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        Jenssegers\Agent\AgentServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        'Buzz\LaravelGoogleCaptcha\CaptchaServiceProvider',
 
         /*
          * Application Service Providers...
@@ -226,7 +231,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

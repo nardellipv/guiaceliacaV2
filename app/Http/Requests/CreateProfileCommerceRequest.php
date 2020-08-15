@@ -13,7 +13,7 @@ class CreateProfileCommerceRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,29 @@ class CreateProfileCommerceRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'address' => 'required | min:10',
+            'phone' => 'nullable | numeric ',
+            'about' => 'required | min:10',
+            'web' => 'nullable|url',
+            'facebook' => 'nullable|url',
+            'twitter' => 'nullable|url',
+            'instagram' => 'nullable|url',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'El nombre es requerido',
+            'address.required' => 'La dirección es requerida',
+            'phone.numeric' => 'El teléfono debe ser un numérico',
+            'about.required' => 'Sobre nosotros es requerido',
+            'about.min' => 'Sobre nosotros no debe ser tan corto',
+            'web.url' => 'La dirección del sitio web debe ser valida',
+            'facebook.url' => 'La dirección del sitio debe ser valida',
+            'twitter.url' => 'La dirección del sitio debe ser valida',
+            'instagram.url' => 'La dirección del sitio debe ser valida',
         ];
     }
 }

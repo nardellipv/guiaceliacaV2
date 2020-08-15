@@ -11,14 +11,10 @@ class complaintMessage extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $comment;
+    public function __construct($comment)
     {
-        //
+        $this->comment = $comment;
     }
 
     /**
@@ -28,6 +24,7 @@ class complaintMessage extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('emails.complaintComment')
+            ->subject('Denuncia de Comentario');
     }
 }

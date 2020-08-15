@@ -13,7 +13,7 @@ class ProfileUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,17 @@ class ProfileUserRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'lastname' => 'required',
+
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'El nombre es requerido',
+            'lastname.required' => 'El apellido es requerido',
         ];
     }
 }

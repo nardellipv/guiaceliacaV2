@@ -13,7 +13,7 @@ class MessageClienteToCommerceRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,20 @@ class MessageClienteToCommerceRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'email' => 'required | email',
+            'messageText' => 'required | min:10',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'El nombre es requerido',
+            'email.required' => 'El email es requerido',
+            'email.email' => 'El email debe ser valido',
+            'messageText.required' => 'El mensaje es requerido',
+            'messageText.min' => 'El mensaje debe ser más largo',
         ];
     }
 }

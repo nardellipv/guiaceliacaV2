@@ -13,7 +13,7 @@ class CommentPostRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,17 @@ class CommentPostRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required | min:5',
+            'text-message' => 'required | min:10',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'El nombre es requerido',
+            'text-message.required' => 'El mensaje es requerido',
+            'text-message.min' => 'El mensaje debe ser más largo',
         ];
     }
 }

@@ -13,7 +13,7 @@ class PromotionCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,22 @@ class PromotionCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|min:5|max:20',
+            'text' => 'required|min:5|max:30',
+            'porcentage' => 'max:2',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'El nombre es requerido',
+            'name.min' => 'El nombre debe tener más de 5 caracteres',
+            'name.max' => 'El nombre debe tener menos de 20 caracteres',
+            'text.required' => 'El texto es requerido',
+            'text.min' => 'El texto debe tener más de 5 caracteres',
+            'text.max' => 'El texto debe tener meos de 30 caracteres',
+            'porcentage.max' => 'El porcentaje debe tener como maximo 2 caracteres',
         ];
     }
 }
