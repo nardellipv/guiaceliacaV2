@@ -17,7 +17,7 @@
                                         <div class="featured-restaurant-box wow fadeIn" data-wow-delay="0.1s">
                                             <div class="featured-restaurant-thumb">
                                                 @if (!$ratingVote->logo)
-                                                    <img src="{{ asset('images/img-logo-grande.png') }}"
+                                                    <img src="{{ asset('styleWeb/assets/images/img-logo-grande.png') }}"
                                                          alt="{{ $ratingVote->name }}" itemprop="image">
                                                 @else
                                                     <img class="brd-rd50"
@@ -50,7 +50,7 @@
                                         <div class="featured-restaurant-box wow fadeIn" data-wow-delay="0.1s">
                                             <div class="featured-restaurant-thumb">
                                                 @if (!$ratingVisit->logo)
-                                                    <img src="{{ asset('images/img-logo-grande.png') }}"
+                                                    <img src="{{ asset('styleWeb/assets/images/img-logo-grande.png') }}"
                                                          alt="{{ $ratingVisit->name }}" itemprop="image">
                                                 @else
                                                     <img class="brd-rd50"

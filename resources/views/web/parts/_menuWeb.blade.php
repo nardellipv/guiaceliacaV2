@@ -2,10 +2,12 @@
     <div class="topbar">
         <div class="container">
             <div class="topbar-register">
-                <a class="log-popup-btn" href="#" title="Login" itemprop="url">Ingresar</a> / <a class="sign-popup-btn"
-                                                                                                 href="#"
-                                                                                                 title="Register"
-                                                                                                 itemprop="url">Registrarse</a>
+                @if(Auth::check())
+                    <a href="{{ route('profile') }}" title="Login" itemprop="url"><i
+                                class="fa fa-user"></i> Hola, {{ Auth::user()->name }}</a>
+                @else
+                    <a class="log-popup-btn" href="#" title="Login" itemprop="url">Ingresar</a>
+                @endif
             </div>
             <div class="social1">
                 <a href="https://www.facebook.com/guiaceliaca" title="Facebook" itemprop="url" target="_blank"><i
@@ -17,7 +19,7 @@
     </div><!-- Topbar -->
     <div class="logo-menu-sec">
         <div class="container">
-            <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img
+            <div class="logo"><h1 itemprop="headline"><a href="{{ url('/') }}" title="Home" itemprop="url"><img
                                 src="{{ asset('styleWeb/assets/images/img-logo.png') }}" alt="guiaceliaca"
                                 itemprop="image" style="width: 40%; margin-top: -10px"></a></h1></div>
             <nav>
@@ -44,10 +46,17 @@
                             </ul>
                         </li>
                     </ul>
-                    <a class="red-bg brd-rd4" href="{{ route('register') }}" title="REGISTRAR COMERCIO" itemprop="url">REGISTRAR
-                        COMERCIO</a>
+                    @if(Auth::guest())
+                        <a class="red-bg brd-rd4" href="{{ route('register') }}"
+                           title="REGISTRARSE" itemprop="url">REGISTRARSE</a>
+                    @else
+                        @if(Auth::user()->type != 'OWNER')
+                            <a class="red-bg brd-rd4" href="{{ route('create.accountCommerce') }}"
+                               title="REGISTRAR COMERCIO" itemprop="url">REGISTRAR COMERCIO</a>
+                        @endif
+                    @endif
                 </div>
-            </nav><!-- Navigation -->
+            </nav>
         </div>
-    </div><!-- Logo Menu Section -->
-</header><!-- Header -->
+    </div>
+</header>

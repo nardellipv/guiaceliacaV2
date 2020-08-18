@@ -24,26 +24,12 @@ class SearchController extends Controller
 
     public function filterCommerce(Request $request)
     {
-        $provinces = Province::all();
+        $keyword = $request->keywords;
 
-        if ($request->keywords) {
-            $searching = Commerce::with(['user','province'])
-                ->where('name', 'LIKE', "%$request->keywords%")
-                ->get();
+        $searching = Commerce::with(['user','province'])
+            ->where('name', 'LIKE', "%$keyword%")
+            ->get();
 
-            return view('web.parts.searching._searchCommerce', compact('searching', 'provinces'));
-        }
-
-        if ($request->provinces) {
-            $searching = Commerce::with(['user','province'])
-                ->orWhere('province_id', $request->provinces)
-                ->get();
-
-            return view('web.parts.searching._searchCommerce', compact('searching','provinces'));
-        }
-
-        if($request->has('keywords') && $request->has('provinces')){
-            return back();
-        }
+        return view('web.parts.searching._searchCommerce', compact('searching','keyword'));
     }
 }

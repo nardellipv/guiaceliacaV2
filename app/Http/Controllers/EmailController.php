@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MessageClienteToCommerceRequest;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Commerce;
 use App\Http\Requests\EmailContactSiteRequest;
-use App\Http\Requests\MessageClientToCommerceRequest;
 use App\Http\Requests\RespondCommerceToClientMessage;
 use App\Mail\MailClientContact;
-use App\Mail\MailContactPopUp;
 use App\Mail\MessageClientToCommerce;
 use App\Mail\RespondCommerceToClient;
 use App\Message;
@@ -17,7 +16,7 @@ use Illuminate\Support\Facades\Mail;
 
 class EmailController extends Controller
 {
-    public function MessageClientToCommerce(MessageClientToCommerceRequest $request, $id)
+    public function MessageClientToCommerce(MessageClienteToCommerceRequest $request, $id)
     {
         Message::create([
             'name' => $request['name'],
@@ -38,14 +37,6 @@ class EmailController extends Controller
     public function MailContactToSite(EmailContactSiteRequest $request)
     {
         Mail::to('info@guiaceliaca.com.ar')->send(new MailClientContact($request));
-
-        Toastr::success('Se envio correctamente tu mensaje, muchas gracias, en breve te contestaremos.', 'Mensaje Enviado!', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
-        return back();
-    }
-
-    public function MailContactPopUp(Request $request)
-    {
-        Mail::to('info@guiaceliaca.com.ar')->send(new MailContactPopUp($request));
 
         Toastr::success('Se envio correctamente tu mensaje, muchas gracias, en breve te contestaremos.', 'Mensaje Enviado!', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();

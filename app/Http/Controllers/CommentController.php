@@ -6,6 +6,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use App\Comment;
 use App\Commerce;
 use App\Http\Requests\CommentToCommerceRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -14,9 +15,11 @@ class CommentController extends Controller
         $commerce = Commerce::where('slug', $slug)
             ->first();
 
+        $user = Auth::user();
+
         Comment::create([
-            'name' =>  $request['name'],
-            'email' =>  $request['email'],
+            'name' =>  $user->name,
+            'email' =>  $user->email,
             'message' =>  $request['text-message'],
             'commerce_id' => $commerce->id
         ]);

@@ -32,7 +32,7 @@
                                     <h1 itemprop="headline">{{ $post->title }}</h1>
                                     <p itemprop="description">{!! $post->body !!}</p>
                                     <div class="post-share">
-                                        <span>Share:</span>
+                                        <span>Compartir:</span>
                                         <a class="brd-rd2" href="https://facebook.com/sharer/sharer.php?u=https://guiaceliaca.com.ar/blog/{{$post->slug}}" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook"></i></a>
                                         <a class="brd-rd2" href="https://twitter.com/intent/tweet/?text={{ $post->title }}.&amp;url=https://guiaceliaca.com.ar/blog/{{$post->slug}}" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
                                         <a class="brd-rd2" href="https://web.whatsapp.com/send?text={{ $post->title }} https://guiaceliaca.com.ar/blog/{{$post->slug}}" title="Whatsapp" itemprop="url" target="_blank"><i class="fa fa-whatsapp"></i></a>

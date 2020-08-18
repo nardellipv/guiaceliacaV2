@@ -7,7 +7,7 @@
                 <h2 itemprop="headline">en comercios adheridos.</h2>
                 <form class="restaurant-search-form2 brd-rd30" method="post" action="{{ route('filter.commerce') }}">
                     @csrf
-                    <input class="brd-rd30" type="text" placeholder="Nombre Comercio">
+                    <input class="brd-rd30" type="text" name="keywords" placeholder="Nombre Comercio">
                     <button class="brd-rd30 red-bg" type="submit">Buscar</button>
                 </form>
             </div>

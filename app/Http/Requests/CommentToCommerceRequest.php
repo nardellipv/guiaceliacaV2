@@ -24,16 +24,12 @@ class CommentToCommerceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required',
             'text-message' => 'required | min:5',
         ];
     }
     public function messages()
     {
         return [
-            'name.required' => 'El nombre es requerido',
-            'email.required' => 'El email es requerido',
             'text-message.required' => 'El mensaje es requerido',
             'text-message.min' => 'El mensaje debe ser más largo',
         ];

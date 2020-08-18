@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers\AdminClient;
 
+use App\Category;
+use App\Characteristic;
+use App\Characteristic_commerce;
+use App\Comment;
+use App\Payment_commerce;
+use App\Price;
+use App\Product;
+use App\Promotion;
 use Brian2694\Toastr\Facades\Toastr;
-use App\Blog;
-use App\CharacteristicCommerce;
-use App\Characteristics;
 use App\Commerce;
 use App\Http\Requests\CreateProfileCommerceRequest;
 use App\Http\Requests\ProfileUserRequest;
 use App\Message;
 use App\Payment;
-use App\PaymentCommerce;
 use App\Picture;
-use App\Prices;
 use App\Province;
 use App\User;
 use Illuminate\Http\Request;
@@ -42,20 +45,40 @@ class ProfileCommerceController extends Controller
             if ($commerceId->type == 'FREE') {
                 Cookie::queue('owner', 'ingresoOwner', '2628000');
             } else {
-//                dd('entro');
                 Cookie::queue(Cookie()->forget('owner', 'ingresoOwner'));
             }
 
+            $promotions = Promotion::where('commerce_id', $commerceId->id)
+                ->get();
+
+            $messages = Message::where('commerce_id', $commerceId->id)
+                ->orderBy('created_at', 'DESC')
+                ->get();
+
+            $comments = Comment::where('commerce_id', $commerceId->id)
+                ->orderBy('created_at', 'DESC')
+                ->get();
+
+            $characteristicsCommerce = Characteristic_commerce::with(['characteristic'])
+                ->where('commerce_id', $commerceId->id)
+                ->get();
+
+            $paymentsCommerce = Payment_commerce::with(['payment'])
+                ->where('commerce_id', $commerceId->id)
+                ->get();
+
+            $products = Product::where('commerce_id', $commerceId->id)
+                ->get();
         }
 
-        $lastBlog = Blog::orderBy('created_at', 'DESC')
-            ->take(2)
-            ->get();
-
-        $commercesPro = Commerce::with(['user', 'province'])
+        /*$commercesPro = Commerce::with(['user', 'province'])
             ->where('type', 'PREMIUM')
-            ->get();
+            ->get();*/
 
+        $provinces = Province::all();
+        $characteristics = Characteristic::all();
+        $payments = Payment::all();
+        $categories = Category::all();
 
         if (!Cookie::get('lastLogin')) {
             $lastLogin = User::find(Auth::user()->id);
@@ -66,23 +89,9 @@ class ProfileCommerceController extends Controller
 
         Cookie::queue('login', 'ingreso', '2628000');
 
-        return view('web.parts.adminClient.profile._accountCommerce', compact('lastMessages', 'lastBlog', 'commercesPro'));
-    }
-
-    public function profileEdit($id)
-    {
-        $user = User::find($id);
-
-        if ($user->type == 'OWNER') {
-
-            $commerce = Commerce::where('user_id', $id)
-                ->first();
-
-            $provinces = Province::all();
-        }
-
-        return view('web.parts.adminClient.profile._editProfile', compact('user', 'provinces', 'commerce',
-            'characteristics', 'payments'));
+        return view('web.parts.adminClient.profile._accountCommerce', compact('lastMessages', 'promotions', 'commercesPro',
+            'characteristicsCommerce', 'provinces', 'paymentsCommerce', 'characteristics', 'payments', 'messages', 'comments', 'categories',
+            'products'));
     }
 
     public function profileUpdate(ProfileUserRequest $request, $id)
@@ -90,6 +99,10 @@ class ProfileCommerceController extends Controller
         $user = User::find($id);
         $user->name = $request['name'];
         $user->lastname = $request['lastname'];
+
+        if($request->password){
+            $user->password = Hash::make($request['password']);
+        }
 
 //        creamos carpeta
         $path = 'users/images/' . $user->id;
@@ -127,24 +140,14 @@ class ProfileCommerceController extends Controller
         return back();
     }
 
-    public function profilePassUpdate(Request $request, $id)
-    {
-        $user = User::find($id);
-        $user->password = Hash::make($request['password']);
-        $user->save();
-
-        Toastr::success('Se reseteó correctamente su Contraseña', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
-        return back();
-    }
-
     public function createAccountCommerce()
     {
         $provinces = Province::all();
-        $characteristics = Characteristics::all();
+        $characteristics = Characteristic::all();
         $payments = Payment::all();
 
         Toastr::info('Por favor complete todos los datos para crear la cuenta', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
-        return view('web.parts.adminClient.profile._createCommerce', compact('provinces', 'characteristics', 'payments'));
+        return view('web.parts.adminClient.profile._create-profile-commerce', compact('provinces', 'characteristics', 'payments'));
     }
 
     public function storeAccountCommerce(CreateProfileCommerceRequest $request)
@@ -172,7 +175,7 @@ class ProfileCommerceController extends Controller
 
         if ($characteristicId) {
             foreach ($characteristicId as $characteristic) {
-                CharacteristicCommerce::create([
+                Characteristic_commerce::create([
                     'commerce_id' => $commerce->id,
                     'characteristic_id' => $characteristic
                 ]);
@@ -181,7 +184,7 @@ class ProfileCommerceController extends Controller
 
         if ($paymentId) {
             foreach ($paymentId as $payment) {
-                PaymentCommerce::create([
+                Payment_commerce::create([
                     'commerce_id' => $commerce->id,
                     'payment_id' => $payment
                 ]);
@@ -233,19 +236,19 @@ class ProfileCommerceController extends Controller
         return redirect()->action('AdminClient\ProfileCommerceController@profileCommerce');
     }
 
-    public function editAccountCommerceCommerce($slug)
+/*    public function editAccountCommerceCommerce($slug)
     {
         $commerce = Commerce::where('slug', $slug)
             ->first();
 
-        $characteristics = Characteristics::all();
+        $characteristics = Characteristic::all();
         $payments = Payment::all();
 
-        $characteristicsCommerce = CharacteristicCommerce::with(['characteristic'])
+        $characteristicsCommerce = Characteristic_commerce::with(['characteristic'])
             ->where('commerce_id', $commerce->id)
             ->get();
 
-        $paymentsCommerce = PaymentCommerce::with(['payment'])
+        $paymentsCommerce = Payment_commerce::with(['payment'])
             ->where('commerce_id', $commerce->id)
             ->get();
 
@@ -253,13 +256,13 @@ class ProfileCommerceController extends Controller
 
         return view('web.parts.adminClient.profile._editCommerce', compact('commerce', 'provinces', 'characteristics',
             'payments', 'characteristicsCommerce', 'paymentsCommerce'));
-    }
+    }*/
 
     public function updateAccountCommerceCommerce(CreateProfileCommerceRequest $request, $id)
     {
         $commerce = Commerce::find($id);
 
-        $priceType = Prices::where('name', $request->type)
+        $priceType = Price::where('name', $request->type)
             ->first();
 
 //        verifico si cambio el tipo de cuenta
@@ -277,7 +280,7 @@ class ProfileCommerceController extends Controller
 
         if ($paymentId) {
             foreach ($paymentId as $payment) {
-                $commerceSave = PaymentCommerce::firstOrNew([
+                $commerceSave = Payment_commerce::firstOrNew([
                     'commerce_id' => $commerce->id,
                     'payment_id' => $payment,
                 ]);
@@ -287,7 +290,7 @@ class ProfileCommerceController extends Controller
 
         if ($characteristicId) {
             foreach ($characteristicId as $characteristic) {
-                $characteristicsSave = CharacteristicCommerce::firstOrNew([
+                $characteristicsSave = Characteristic_commerce::firstOrNew([
                     'commerce_id' => $commerce->id,
                     'characteristic_id' => $characteristic,
                 ]);
@@ -393,7 +396,7 @@ class ProfileCommerceController extends Controller
 
     public function deleteCharacteristic($id)
     {
-        $characteristic = CharacteristicCommerce::find($id);
+        $characteristic = Characteristic_commerce::find($id);
 
         $characteristic->delete();
 
@@ -403,7 +406,7 @@ class ProfileCommerceController extends Controller
 
     public function deletePayment($id)
     {
-        $payment = PaymentCommerce::find($id);
+        $payment = Payment_commerce::find($id);
 
         $payment->delete();
 

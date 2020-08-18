@@ -13,7 +13,7 @@ class ProductCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,8 +28,6 @@ class ProductCreateRequest extends FormRequest
             'category_id' => 'required',
             'description' => 'required|max:250',
             'price' => 'required|max:10',
-            'offer' => 'max:10',
-            'available' => 'required',
             'photo' => 'mimes:jpeg,jpg,png,gif|max:2048',
         ];
     }
@@ -44,8 +42,6 @@ class ProductCreateRequest extends FormRequest
             'description.max' => 'La descripción no debe tener más de 250 caracteres',
             'price.required' => 'El precio es requerido',
             'price.max' => 'El precio no debe tener más de 10 caracteres',
-            'offer.max' => 'La oferta no debe tener más de 10 caracteres',
-            'available.required' => 'La disponibilidad del producto es requerida',
             'photo.max' => 'La foto no debe superar los 2MB',
             'photo.mimes' => 'La foto debe ser una imágen',
         ];

@@ -2,82 +2,81 @@
 
 
 @section('content')
-    <section id="grid-content" style="margin-top: 10%">
-        <div class="container">
-            <div class="list-box-title">
-                <span><i class="icon fa fa-plus-square"></i>Busqueda</span>
-            </div>
-            <div class="row">
-                <div class="col-sm-8 col-md-9">
-                    <div class="row">
-                        @if(count($searching) > 0)
-                        @foreach($searching as $search)
-                            <div class="col-sm-6 col-md-4">
-                                <div class="box-ads box-grid">
-                                    <a class="hover-effect image image-fill"
-                                       href="{{ route('name.commerce', $search->slug) }}">
-                                        <span class="cover"></span>
-                                        @if (!$search->logo)
-                                            <img alt="guía celiaca"
-                                                 src="{{ asset('images/img-logo-grande.png') }}" class="img-responsive">
-                                        @else
-                                            <img alt="{{ $search->name }}"
-                                                 src="{{ asset('users/images/' . $search->user->id . '/comercio/358x250-'. $search->logo) }}">
-                                        @endif
-                                        <h3 class="title">{{ $search->name }}</h3>
-                                    </a>
-                                    <span class="price"></span>
-                                    <span class="address"><i
-                                                class="fa fa-map-marker"></i> {{--{{ $search->region->name }}--}}
-                                        {{ Str::limit($search->province->name,20) }}</span>
-                                    <span class="description">{{ Str::limit($search->about, 40)  }}</span>
-                                    <dl class="detail">
-                                        <dt class="status">Visitas:</dt>
-                                        <dd>{{ $search->visit }}</dd>
-                                        <dt class="area">Votos:</dt>
-                                        <dd>
-                                            @if($search->votes_positive > 0)
-                                                <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                     aria-valuenow="60"
-                                                     aria-valuemin="0" aria-valuemax="100"
-                                                     style="width:{{($search->votes_positive * 100)/ ($search->votes_positive + $search->votes_negative)}}%;height: 80%;">
-                                                    {{round(($search->votes_positive * 100)/ ($search->votes_positive + $search->votes_negative)),0}}
-                                                    %
+    <section>
+        <div class="block top-padd30 gray-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="sec-box">
+                            <div class="col-md-12 col-sm-12 col-lg-12">
+                                <div class="search-found">
+                                    <h3 itemprop="headline">Busqueda para <span class="red-clr">"{{ $keyword }}"</span>
+                                    </h3>
+                                    @if(count($searching) > 0)
+                                        <p itemprop="description">Encontramos los siguientes resultados para su busqueda</p>
+                                    @else
+                                        <p itemprop="description">Lamentablemente no hemos encontrado ningún resultado</p>
+                                    @endif
+                                    <form class="search-frm" method="post" action="{{ route('filter.commerce') }}">
+                                        @csrf
+                                        <input type="text" name="keywords" placeholder="Nombre Comercio">
+                                        <button class="red-bg" type="submit"><i class="fa fa-search"></i></button>
+                                    </form>
+                                </div>
+                                <div class="remove-ext">
+                                    <div class="row">
+                                        <div class="masonry">
+                                            @foreach($searching as $search)
+                                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                                    <div class="featured-restaurant-box style2 brd-rd12 wow fadeIn"
+                                                         data-wow-delay="0.1s">
+                                                        <div class="featured-restaurant-thumb">
+                                                            <a href="{{ route('name.commerce', $search->slug) }}"
+                                                               title=""
+                                                               itemprop="url">
+                                                                @if (!$search->logo)
+                                                                    <img src="{{ asset('styleWeb/assets/images/img-logo-grande.png') }}"
+                                                                         alt="{{ $search->name }}" itemprop="image">
+                                                                @else
+                                                                    <img src="{{ asset('users/images/' . $search->user->id . '/comercio/358x250-'. $search->logo) }}"
+                                                                         alt="{{ $search->name }}" itemprop="image">
+                                                                @endif
+                                                            </a>
+                                                        </div>
+                                                        <div class="featured-restaurant-info">
+                                                    <span class="red-clr">{{ $search->province->name }}
+                                                        - {{ $search->address }}</span>
+                                                            <h4 itemprop="headline"><a
+                                                                        href="{{ route('name.commerce', $search->slug) }}"
+                                                                        title=""
+                                                                        itemprop="url">{{ $search->name }}</a></h4>
+                                                            <span class="food-types">Sobre nosotros:
+                                                        <em class="yellow-clr">{{ Str::limit($search->about, 100)  }}</em>
+                                                    </span>
+                                                            {{--<ul class="post-meta">
+                                                                <li><i class="fa fa-check-circle-o"></i> Min order $50</li>
+                                                                <li><i class="flaticon-transport"></i> 30min</li>
+                                                                <li><i class="flaticon-money"></i> Accepts cash & online
+                                                                    payments
+                                                                </li>
+                                                            </ul>--}}
+                                                            <span class="post-likes style2 red-clr"><i
+                                                                        class="fa fa-heart-o"></i> {{ $search->votes_positive }}</span>
+                                                            <a class="brd-rd5"
+                                                               href="{{ route('name.commerce', $search->slug) }}"
+                                                               title="Order Online">Ir al comercio</a>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            @else
-                                                <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                     aria-valuenow="60"
-                                                     aria-valuemin="0" aria-valuemax="100"
-                                                     style="width:0%;height: 80%;">0%
-                                                </div>
-                                            @endif
-                                        </dd>
-                                    </dl>
-                                    <div class="footer">
-                                        <a class="btn btn-reverse" href="{{ route('name.commerce', $search->slug) }}"><i
-                                                    class="fa fa-search"></i> Ir al negocio</a>
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                        @else
-                            <h3 class="text-center" style="color: #f1c40f">Sin locales</h3>
-                        @endif
+                        </div>
                     </div>
                 </div>
-                @include('web.parts.searching._asideSearching')
             </div>
         </div>
-
-        <div class="container" id="pagination">
-            <div class="row">
-                <div class="col-md-9">
-                    <ul class="pagination">
-                        {{--{{ $searching->render() }}--}}
-                    </ul>
-                </div>
-            </div>
-        </div>
-
     </section>
 @endsection

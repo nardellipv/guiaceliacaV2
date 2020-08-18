@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Characteristic_commerce;
+use App\Payment_commerce;
 use Brian2694\Toastr\Facades\Toastr;
-use App\CharacteristicCommerce;
 use App\Comment;
 use App\Commerce;
-use App\PaymentCommerce;
 use App\Product;
 use App\Promotion;
 use Illuminate\Support\Facades\Cookie;
@@ -25,18 +25,17 @@ class CommerceController extends Controller
 
         $totalVisit = ($commerce->visit + $visit) / 100;
 
-        $characteristics = CharacteristicCommerce::with(['characteristic'])
+        $characteristics = Characteristic_commerce::with(['characteristic'])
             ->where('commerce_id', $commerce->id)
             ->get();
 
-        $payments = PaymentCommerce::with(['payment'])
+        $payments = Payment_commerce::with(['payment'])
             ->where('commerce_id', $commerce->id)
             ->get();
 
-        $products = Product::where('commerce_id', $commerce->id)
+        $products = Product::with(['commerce','category'])
+        ->where('commerce_id', $commerce->id)
             ->where('AVAILABLE', 'YES')
-            ->inRandomOrder()
-            ->take(6)
             ->get();
 
         $comments = Comment::where('commerce_id', $commerce->id)
@@ -66,27 +65,6 @@ class CommerceController extends Controller
         $commerce->save();
 
         Cookie::queue('voto' . $commerce->slug, $commerce->slug, '2628000');
-
-        Toastr::success('Muchas gracias por tu voto', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
-        return back();
-    }
-
-
-    public function negative($slug)
-    {
-
-        $commerce = Commerce::where('slug', $slug)
-            ->first();
-
-        if (Cookie::get('voto' . $commerce->slug) == $slug) {
-            Toastr::info('Ya votaste anteriormente a este comercio', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
-            return back();
-        }
-
-        $commerce->increment('votes_negative');
-        $commerce->save();
-
-        Cookie::queue('voto', $commerce->slug);
 
         Toastr::success('Muchas gracias por tu voto', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();

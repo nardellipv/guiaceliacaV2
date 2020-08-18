@@ -15,31 +15,16 @@ use Image;
 
 class PromotionController extends Controller
 {
-    public function listPromotion()
-    {
-        $commerce = Commerce::where('user_id', Auth::user()->id)
-            ->first();
-
-        $promotions = Promotion::where('commerce_id', $commerce->id)
-            ->paginate(10);
-
-        return view('web.parts.adminClient.promotion._listPromotion', compact('promotions'));
-    }
-
-    public function createPromotion()
-    {
-        return view('web.parts.adminClient.promotion._createPromotion');
-    }
 
     public function storePromotion(PromotionCreateRequest $request)
     {
         $commerceId = Commerce::where('user_id', Auth::user()->id)
             ->first();
 
-        $img = Image::make('images/ticket.jpg');
+        $img = Image::make('styleWeb/assets/images/ticket.jpg');
 
         $img->text($request->name, 200, 45, function ($font) {
-            $font->file('style/font/sixty.TTF');
+            $font->file('styleWeb/assets/fonts/sixty.TTF');
 
             $font->size(35);
 
@@ -52,7 +37,7 @@ class PromotionController extends Controller
         });
 
         $img->text($request->text, 190, 75, function ($font) {
-            $font->file('style/font/sixty.TTF');
+            $font->file('styleWeb/assets/fonts/sixty.TTF');
 
             $font->size(20);
 
@@ -66,7 +51,7 @@ class PromotionController extends Controller
 
         if($request->percentage != NULL) {
             $img->text($request->percentage . '%', 200, 145, function ($font) {
-                $font->file('style/font/stereofidelic.ttf');
+                $font->file('styleWeb/assets/fonts/stereofidelic.ttf');
 
                 $font->size(60);
 
@@ -80,7 +65,7 @@ class PromotionController extends Controller
         }
 
         $img->text("Válida " . Carbon::parse($request->end_date)->format('d/m/Y'), 150, 175, function ($font) {
-            $font->file('style/font/yellow.otf');
+            $font->file('styleWeb/assets/fonts/yellow.otf');
 
             $font->size(20);
 

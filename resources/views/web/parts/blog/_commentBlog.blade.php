@@ -6,7 +6,7 @@
             <div class="comment">
                 @foreach($commentsPost as $commentPost)
                     @if (!$commentPost->user->picture)
-                        <img class="brd-rd50" src="{{ asset('images/img-logo-grande.png') }}" alt="guiaceliaca">
+                        <img class="brd-rd50" src="{{ asset('styleWeb/assets/images/img-logo-grande.png') }}" alt="guiaceliaca">
                     @else
                         <img class="brd-rd50"
                              src="{{ asset('users/images/' . $commentPost->user->id . '/perfil/512x512-'. $commentPost->user->picture) }}"

@@ -34,7 +34,6 @@ Route::view('/pago-erroneo', 'web.parts._errorPay')->name('pay.error');
 Route::view('/ayuda-paquetes', 'web.parts.adminClient.profile._FAQPackets')->name('faq.packets');
 
 Route::get('votes_positive/{slug}', 'CommerceController@positive')->name('positive');
-Route::get('votes_negative/{slug}', 'CommerceController@negative')->name('negative');
 
 Route::post('/post/comentario/{slug}', 'CommentController@addComment')->name('add.commentCommerce');
 
@@ -55,9 +54,9 @@ Route::post('/filtro/comercio', 'SearchController@filterCommerce')->name('filter
 //admin client
 Route::middleware(['auth'])->group(function () {
     Route::get('/perfil', 'AdminClient\ProfileCommerceController@profileCommerce')->name('profile');
-    Route::get('/perfil/editar/{id}', 'AdminClient\ProfileCommerceController@profileEdit')->name('profile.edit');
+//    Route::get('/perfil/editar/{id}', 'AdminClient\ProfileCommerceController@profileEdit')->name('profile.edit');
     Route::post('/perfil/update/{id}', 'AdminClient\ProfileCommerceController@profileUpdate')->name('profile.update');
-    Route::post('/perfil/update/pass/{id}', 'AdminClient\ProfileCommerceController@profilePassUpdate')->name('profile.pass.update');
+//    Route::post('/perfil/update/pass/{id}', 'AdminClient\ProfileCommerceController@profilePassUpdate')->name('profile.pass.update');
 
     Route::get('/perfil/crear-cuenta', 'AdminClient\ProfileCommerceController@createAccountCommerce')->name('create.accountCommerce');
     Route::post('/perfil/store', 'AdminClient\ProfileCommerceController@storeAccountCommerce')->name('store.accountCommerce');
@@ -67,19 +66,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/perfil/recetas/crear', 'AdminClient\RecipeController@addRecipes')->name('add.recipes');
     Route::post('/perfil/recetas/crear/create', 'AdminClient\RecipeController@createRecipes')->name('create.recipes');
 
-    Route::get('/perfil/producto', 'AdminClient\ProductController@productIndex')->name('product.index');
+//    Route::get('/perfil/producto', 'AdminClient\ProductController@productIndex')->name('product.index');
     Route::post('/perfil/producto/crear', 'AdminClient\ProductController@productCreate')->name('product.create');
-    Route::get('/perfil/producto/listado', 'AdminClient\ProductController@productList')->name('product.list');
-    Route::get('/perfil/producto/pausado', 'AdminClient\ProductController@pausedProductList')->name('product.paused');
-    Route::get('/perfil/producto/pausar-producto/{id}', 'AdminClient\ProductController@pausedProductAction')->name('product.pausedAction');
+//    Route::get('/perfil/producto/listado', 'AdminClient\ProductController@productList')->name('product.list');
+//    Route::get('/perfil/producto/pausado', 'AdminClient\ProductController@pausedProductList')->name('product.paused');
+//    Route::get('/perfil/producto/pausar-producto/{id}', 'AdminClient\ProductController@pausedProductAction')->name('product.pausedAction');
     Route::get('/perfil/producto/borrar-producto/{id}', 'AdminClient\ProductController@pausedDeleteAction')->name('product.deleteAction');
-    Route::get('/perfil/producto/activar-producto/{id}', 'AdminClient\ProductController@pausedActiveAction')->name('product.activeAction');
+//    Route::get('/perfil/producto/activar-producto/{id}', 'AdminClient\ProductController@pausedActiveAction')->name('product.activeAction');
 
-    Route::get('/perfil/mensajes', 'AdminClient\MenssageController@messageList')->name('message.list');
-    Route::get('/perfil/mensajes-borrar/{id}', 'AdminClient\MenssageController@messageDelete')->name('message.delete');
-    Route::get('/perfil/mensajes/leer/{id}', 'AdminClient\MenssageController@messageRead')->name('message.read');
+//    Route::get('/perfil/mensajes', 'AdminClient\MenssageController@messageList')->name('message.list');
+    Route::get('/perfil/mensajes-borrar/{id}', 'AdminClient\MessageController@messageDelete')->name('message.delete');
+    Route::get('/perfil/mensajes/leer/{id}', 'AdminClient\MessageController@messageRead')->name('message.read');
 
-    Route::get('/perfil/comentarios', 'AdminClient\CommentController@commentList')->name('comment.list');
+//    Route::get('/perfil/comentarios', 'AdminClient\CommentController@commentList')->name('comment.list');
     Route::get('/perfil/comentarios/denuncia/{id}', 'AdminClient\CommentController@commentReport')->name('comment.report');
 
     Route::get('/perfil/caracteristica/eliminar/{id}', 'AdminClient\ProfileCommerceController@deleteCharacteristic')->name('delete.characteristic');
@@ -87,8 +86,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/comentario-blog/{id}', 'BlogController@commentPost')->name('comment.post');
 
-    Route::get('/promocion/listar', 'AdminClient\PromotionController@listPromotion')->name('list.promotion');
-    Route::get('/promocion/crear', 'AdminClient\PromotionController@createPromotion')->name('create.promotion');
+    /*Route::get('/promocion/listar', 'AdminClient\PromotionController@listPromotion')->name('list.promotion');
+    Route::get('/promocion/crear', 'AdminClient\PromotionController@createPromotion')->name('create.promotion');*/
     Route::post('/promocion/crear/agregar', 'AdminClient\PromotionController@storePromotion')->name('store.promotion');
     Route::get('/promocion/borrar/{id}', 'AdminClient\PromotionController@deletePromotion')->name('delete.promotion');
 });

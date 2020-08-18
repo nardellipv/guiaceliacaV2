@@ -33,7 +33,7 @@
                                                             @if (!$recipe->photos)
                                                                 <a href="{{ route('recipes', $recipe->slug) }}" title="{{ $recipe->name }}" itemprop="url"><img
                                                                             class="brd-rd50"
-                                                                            src="{{ asset('images/img-logo-grande.png') }}"
+                                                                            src="{{ asset('styleWeb/assets/images/img-logo-grande.png') }}"
                                                                             alt="{{ $recipe->name }}"
                                                                             itemprop="image"></a>
                                                             @else

@@ -31,8 +31,6 @@ class ProductController extends Controller
             'category_id' => $request['category_id'],
             'description' => $request['description'],
             'price' => $request['price'],
-            'offer' => $request['offer'],
-            'available' => $request['available'],
             'commerce_id' => $commerceId->id
         ]);
 
@@ -62,50 +60,6 @@ class ProductController extends Controller
         $commerce->save();
 
         Toastr::success('Producto creado correctamente', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
-        return back();
-    }
-
-    public function productList()
-    {
-        $commerce = Commerce::where('user_id', Auth::user()->id)
-            ->first();
-
-        $products = Product::where('commerce_id', $commerce->id)
-            ->where('available', 'YES')
-            ->paginate(10);
-
-        return view('web.parts.adminClient.product._listProduct', compact('products'));
-    }
-
-    public function pausedProductList()
-    {
-        $commerce = Commerce::where('user_id', Auth::user()->id)
-            ->first();
-
-        $products = Product::where('commerce_id', $commerce->id)
-            ->where('available', 'NO')
-            ->paginate(10);
-
-        return view('web.parts.adminClient.product._listPausedProduct', compact('products'));
-    }
-
-    public function pausedProductAction($id)
-    {
-        $product = Product::find($id);
-        $product->available = 'NO';
-        $product->save();
-
-        Toastr::success('Producto Pausado', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
-        return back();
-    }
-
-    public function pausedActiveAction($id)
-    {
-        $product = Product::find($id);
-        $product->available = 'YES';
-        $product->save();
-
-        Toastr::success('Producto Activado', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 

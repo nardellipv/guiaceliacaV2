@@ -10,18 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
-    public function messageList()
-    {
-        $commerce = Commerce::where('user_id', Auth::user()->id)
-            ->first();
-
-        $messages = Message::where('commerce_id', $commerce->id)
-            ->orderBy('created_at', 'DESC')
-            ->paginate(10);
-
-        return view('web.parts.adminClient.message._listMessage', compact('messages'));
-    }
-
     public function messageRead($id)
     {
         $message = Message::where('id', $id)
@@ -30,7 +18,7 @@ class MessageController extends Controller
         $message->read = 'YES';
         $message->save();
 
-        return view('web.parts.adminClient.message._readMessage', compact('message'));
+        return view('web.parts.adminClient.profile._replyMessage', compact('message'));
     }
 
     public function messageDelete($id)

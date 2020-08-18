@@ -29,7 +29,7 @@
                                         @if (!$product->photo)
                                             <span class="image image-fill">
                                             <img alt="guía celiaca"
-                                                 src="{{ asset('images/img-logo-grande.png') }}">
+                                                 src="{{ asset('styleWeb/assets/images/img-logo-grande.png') }}">
                                             </span>
                                         @else
                                             <span class="image image-fill">
