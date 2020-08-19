@@ -2,7 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\User;
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class UserType
 {
@@ -15,6 +17,15 @@ class UserType
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        $userType = User::where('id', Auth::user()->id)
+            ->first();
+
+        if ($userType->type === 'OWNER' OR $userType->type === 'CLIENT') {
+
+            return redirect('/perfil');
+        }else {
+
+            return $next($request);
+        }
     }
 }
