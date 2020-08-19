@@ -101,6 +101,9 @@
 
 </main><!-- Main Wrapper -->
 
+
+@yield('script')
+
 <script src="{{ asset('styleWeb/assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('styleWeb/assets/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('styleWeb/assets/js/plugins.js') }}"></script>

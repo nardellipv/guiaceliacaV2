@@ -19,7 +19,6 @@ use App\Payment;
 use App\Picture;
 use App\Province;
 use App\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
@@ -91,7 +90,7 @@ class ProfileCommerceController extends Controller
 
         return view('web.parts.adminClient.profile._accountCommerce', compact('lastMessages', 'promotions', 'commercesPro',
             'characteristicsCommerce', 'provinces', 'paymentsCommerce', 'characteristics', 'payments', 'messages', 'comments', 'categories',
-            'products'));
+            'products','chart'));
     }
 
     public function profileUpdate(ProfileUserRequest $request, $id)
