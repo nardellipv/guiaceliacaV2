@@ -12,7 +12,7 @@
                                 {{ $comment->name }}
                             </h4>
                             <h6> {{ $comment->created_at->format('d/m/Y') }}</h6>
-                            <p itemprop="description">{{ $comment->message }}</p>
+                            <p itemprop="description" style="max-width: 100%;">{{ $comment->message }}</p>
                         </div>
                     </div>
                 </li>

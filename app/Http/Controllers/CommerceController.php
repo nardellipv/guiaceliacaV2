@@ -35,7 +35,6 @@ class CommerceController extends Controller
 
         $products = Product::with(['commerce','category'])
         ->where('commerce_id', $commerce->id)
-            ->where('AVAILABLE', 'YES')
             ->get();
 
         $comments = Comment::where('commerce_id', $commerce->id)

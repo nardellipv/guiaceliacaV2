@@ -32,7 +32,7 @@
                                                     <a href="{{ route('name.commerce', $commerceList->slug) }}" title=""
                                                        itemprop="url">
                                                         @if (!$commerceList->logo)
-                                                            <img src="{{ asset('images/img-logo-grande.png') }}"
+                                                            <img src="{{ asset('styleWeb/assets/images/img-logo-grande.png') }}"
                                                                  alt="{{ $commerceList->name }}" itemprop="image">
                                                         @else
                                                             <img src="{{ asset('users/images/' . $commerceList->user->id . '/comercio/358x250-'. $commerceList->logo) }}"

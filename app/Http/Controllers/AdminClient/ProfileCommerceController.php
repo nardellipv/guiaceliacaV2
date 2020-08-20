@@ -88,9 +88,9 @@ class ProfileCommerceController extends Controller
 
         Cookie::queue('login', 'ingreso', '2628000');
 
-        return view('web.parts.adminClient.profile._accountCommerce', compact('lastMessages', 'promotions', 'commercesPro',
+        return view('web.parts.adminClient.profile._accountCommerce', compact('lastMessages', 'promotions',
             'characteristicsCommerce', 'provinces', 'paymentsCommerce', 'characteristics', 'payments', 'messages', 'comments', 'categories',
-            'products','chart'));
+            'products'));
     }
 
     public function profileUpdate(ProfileUserRequest $request, $id)
@@ -99,7 +99,7 @@ class ProfileCommerceController extends Controller
         $user->name = $request['name'];
         $user->lastname = $request['lastname'];
 
-        if($request->password){
+        if ($request->password) {
             $user->password = Hash::make($request['password']);
         }
 
@@ -132,8 +132,14 @@ class ProfileCommerceController extends Controller
             $user->picture = Str::after($input['photo512'], '-');
         }
 
-
         $user->save();
+
+        if ($request->province_id) {
+            $commerce = Commerce::where('user_id', $user->id)
+                ->first();
+            $commerce->province_id = $request['province_id'];
+            $commerce->save();
+        }
 
         Toastr::success('Se modificó correctamente su perfil', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
@@ -235,27 +241,27 @@ class ProfileCommerceController extends Controller
         return redirect()->action('AdminClient\ProfileCommerceController@profileCommerce');
     }
 
-/*    public function editAccountCommerceCommerce($slug)
-    {
-        $commerce = Commerce::where('slug', $slug)
-            ->first();
+    /*    public function editAccountCommerceCommerce($slug)
+        {
+            $commerce = Commerce::where('slug', $slug)
+                ->first();
 
-        $characteristics = Characteristic::all();
-        $payments = Payment::all();
+            $characteristics = Characteristic::all();
+            $payments = Payment::all();
 
-        $characteristicsCommerce = Characteristic_commerce::with(['characteristic'])
-            ->where('commerce_id', $commerce->id)
-            ->get();
+            $characteristicsCommerce = Characteristic_commerce::with(['characteristic'])
+                ->where('commerce_id', $commerce->id)
+                ->get();
 
-        $paymentsCommerce = Payment_commerce::with(['payment'])
-            ->where('commerce_id', $commerce->id)
-            ->get();
+            $paymentsCommerce = Payment_commerce::with(['payment'])
+                ->where('commerce_id', $commerce->id)
+                ->get();
 
-        $provinces = Province::all();
+            $provinces = Province::all();
 
-        return view('web.parts.adminClient.profile._editCommerce', compact('commerce', 'provinces', 'characteristics',
-            'payments', 'characteristicsCommerce', 'paymentsCommerce'));
-    }*/
+            return view('web.parts.adminClient.profile._editCommerce', compact('commerce', 'provinces', 'characteristics',
+                'payments', 'characteristicsCommerce', 'paymentsCommerce'));
+        }*/
 
     public function updateAccountCommerceCommerce(CreateProfileCommerceRequest $request, $id)
     {

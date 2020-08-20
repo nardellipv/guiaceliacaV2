@@ -30,7 +30,7 @@
                                                                itemprop="url">{{ $post->created_at->format('d') }}
                                                                 {{ $post->created_at->format('M') }}</a>
                                                             <a class="read-more" href="{{ url('blog', $post->slug) }}"
-                                                               itemprop="url">READ MORE</a>
+                                                               itemprop="url">Leer más</a>
                                                         </div>
                                                     </div>
                                                     <div class="news-info">

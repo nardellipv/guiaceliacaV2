@@ -46,6 +46,6 @@ class HomeController extends Controller
 //        $payments = Payment::all();
 
         return view('web.index', compact('commercesLastRegister', 'lastNews',
-            'ratingVisit', 'ratingVote', 'device', 'commercesListed', 'countProvince'));
+            'ratingVisit', 'ratingVote', 'commercesListed', 'countProvince'));
     }
 }

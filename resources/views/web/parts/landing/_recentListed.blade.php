@@ -18,10 +18,16 @@
                                         <div class="col-md-6 col-sm-12 col-lg-6">
                                             <div class="featured-restaurant-box wow fadeIn" data-wow-delay="0.1s">
                                                 <div class="featured-restaurant-thumb">
-                                                    <img class="brd-rd50"
-                                                         src="{{ asset('users/images/' . $commerceLast->user->id . '/comercio/358x250-'. $commerceLast->logo) }}"
-                                                         alt="{{ $commerceLast->name }}"
-                                                         itemprop="image">
+                                                    @if (!$commerceLast->logo)
+                                                        <img id="profile-display"
+                                                             src="{{ asset('styleWeb/assets/images/img-logo-grande.png') }}"
+                                                             alt="{{ $commerceLast->name }}" itemprop="image">
+                                                    @else
+                                                        <img class="brd-rd50"
+                                                             src="{{ asset('users/images/' . $commerceLast->user->id . '/comercio/358x250-'. $commerceLast->logo) }}"
+                                                             alt="{{ $commerceLast->name }}"
+                                                             itemprop="image">
+                                                    @endif
                                                 </div>
                                                 <div class="featured-restaurant-info">
                                                     <span class="red-clr">{{ $commerceLast->province->name }}
@@ -31,7 +37,7 @@
                                                                 title=""
                                                                 itemprop="url">{{ $commerceLast->name }}</a>
                                                     </h4>
-                                                        <em> {{ Str::limit($commerceLast->about, 75)  }}</em><br>
+                                                    <em> {{ Str::limit($commerceLast->about, 75)  }}</em><br>
                                                     <a class="brd-rd5"
                                                        href="{{ route('name.commerce', $commerceLast->slug) }}"
                                                        title="Order Online">Ir al comercio</a>
