@@ -3,7 +3,7 @@
         <h3 class="title3" itemprop="headline"><span
                     class="sudo-bottom sudo-bg-red">Información</span>
             de {{ $commerce->name }}</h3>
-        <
+
         <iframe
                 width="100%"
 

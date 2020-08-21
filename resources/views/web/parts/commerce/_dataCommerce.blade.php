@@ -28,7 +28,7 @@
                                                     @if (!$commerce->logo)
                                                         <img class="brd-rd3"
                                                              src="{{ asset('styleWeb/assets/images/img-logo-grande.png') }}"
-                                                             alt="{{ $commerce->name }}" itemprop="image">
+                                                             alt="{{ $commerce->name }}" itemprop="image" width="50%">
                                                     @else
                                                         <img class="brd-rd3"
                                                              src="{{ asset('users/images/' . $commerce->user->id . '/comercio/358x250-'. $commerce->logo) }}"
@@ -48,20 +48,52 @@
                                                         <span>{!! $commerce->about !!}</span>
                                                     </div>
                                                 </div>
+
+
+
                                                 <div class="restaurant-detail-tabs">
                                                     <ul class="nav nav-tabs">
                                                         <li class="active"><a href="#tab1-1" data-toggle="tab"><i
                                                                         class="fa fa-cutlery"></i> Productos</a></li>
-                                                        <li><a href="#tab1-3" data-toggle="tab"><i
+                                                        <li><a href="#tab1-2" data-toggle="tab"><i
+                                                                        class="fa fa-ticket"></i> Promociones</a></li>
+                                                        {{--<li><a href="#tab1-3" data-toggle="tab"><i
                                                                         class="fa fa-star"></i> Comentarios</a></li>
                                                         <li><a href="#tab1-4" data-toggle="tab"><i
-                                                                        class="fa fa-book"></i> Mensaje al Comercio</a></li>
+                                                                        class="fa fa-book"></i> Mensaje al Comercio</a>
+                                                        </li>
+                                                        <li><a href="#tab1-5" data-toggle="tab"><i
+                                                                        class="fa fa-info"></i> Información Comercio</a>
+                                                        </li>--}}
+                                                    </ul>
+                                                    <div class="tab-content">
+                                                        @include('web.parts.commerce._listProducts')
+                                                        @include('web.parts.commerce._listVoucher')
+                                                        {{--@include('web.parts.commerce._comments')--}}
+                                                        {{--@include('web.parts.commerce._message')--}}
+                                                        {{--@include('web.parts.commerce._infoCommerce')--}}
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="restaurant-detail-tabs">
+                                                    <ul class="nav nav-tabs">
+                                                        {{--<li class="active"><a href="#tab1-1" data-toggle="tab"><i
+                                                                        class="fa fa-cutlery"></i> Productos</a></li>
+                                                        <li><a href="#tab1-2" data-toggle="tab"><i
+                                                                        class="fa fa-ticket"></i> Promociones</a></li>--}}
+                                                        <li class="active"><a href="#tab1-3" data-toggle="tab"><i
+                                                                        class="fa fa-star"></i> Comentarios</a></li>
+                                                        <li><a href="#tab1-4" data-toggle="tab"><i
+                                                                        class="fa fa-book"></i> Mensaje al Comercio</a>
+                                                        </li>
                                                         <li><a href="#tab1-5" data-toggle="tab"><i
                                                                         class="fa fa-info"></i> Información Comercio</a>
                                                         </li>
                                                     </ul>
                                                     <div class="tab-content">
-                                                        @include('web.parts.commerce._listProducts')
+                                                        {{--@include('web.parts.commerce._listProducts')--}}
+                                                        {{--@include('web.parts.commerce._listVoucher')--}}
                                                         @include('web.parts.commerce._comments')
                                                         @include('web.parts.commerce._message')
                                                         @include('web.parts.commerce._infoCommerce')
@@ -110,6 +142,7 @@
       "ratingCount" : "{{$commerce->votes_positive + $commerce->votes_negative}}"
     }
   }
+
 
 
 

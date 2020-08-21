@@ -25,10 +25,10 @@
                                     <i class="fa fa-tags"></i>
                                     {{ $product->category->name }}
                                 </li>
-                                <li>
+                                {{--<li>
                                     <i class="flaticon-transport"></i>
                                     30min
-                                </li>
+                                </li>--}}
                             </ul>
                         </div>
                     </div>

@@ -548,10 +548,12 @@ nav > div > ul > li:before,
 .switch-slider.brd-rd30:before,
 .booking-table > table tbody td h5:before,
 .profile-info > a.change-password::before
+/*
 {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+*/
 
 .brd-rd40
 {
@@ -1561,7 +1563,7 @@ h3.marginb-0 {margin-bottom: 0;}
   display: table-cell;
   vertical-align: middle;
 }
-.featured-restaurant-thumb {width: 125px;}
+.featured-restaurant-thumb {width: 30%;}
 .featured-restaurant-info {padding-left: 25px;}
 .featured-restaurant-info > span.red-clr {
   display: block;

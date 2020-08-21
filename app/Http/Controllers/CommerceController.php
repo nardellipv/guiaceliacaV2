@@ -40,7 +40,7 @@ class CommerceController extends Controller
         $comments = Comment::where('commerce_id', $commerce->id)
             ->where('status', 'ACTIVE')
             ->orderBy('created_at', 'DESC')
-            ->paginate(5);
+            ->get();
 
         $promotions = Promotion::where('commerce_id', $commerce->id)
             ->where('end_date', '>=', today())

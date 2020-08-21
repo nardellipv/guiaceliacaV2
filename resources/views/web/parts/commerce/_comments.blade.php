@@ -1,7 +1,7 @@
-<div class="tab-pane fade" id="tab1-3">
+<div class="tab-pane fade in active" id="tab1-3">
     <div class="customer-review-wrapper">
         <h4 class="title3" itemprop="headline"><span
-                    class="sudo-bottom sudo-bg-red">Comentarios</span>de
+                    class="sudo-bottom sudo-bg-red">Comentarios</span> de
             otros usuarios</h4>
         <ul class="comments-thread customer-reviews">
             @forelse($comments as $comment)
@@ -17,8 +17,8 @@
                     </div>
                 </li>
             @empty
-                <h4>Este local no posee ningún comentario. Se el
-                    primero en opinar.</h4>
+                <h6 style="margin-bottom: 5%">Este local no posee ningún comentario. Se el
+                    primero en opinar.</h6>
             @endforelse
         </ul>
         <div class="your-review">
