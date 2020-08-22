@@ -27,7 +27,7 @@ class CharacteristicSeeder extends Seeder
         ];
 
         foreach ($characteristics as $characteristic) {
-            Characteristics::create($characteristic);
+            \App\Characteristic::create($characteristic);
         }
     }
 }

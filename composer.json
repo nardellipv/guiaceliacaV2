@@ -10,7 +10,6 @@
     "require": {
         "php": "^7.2.5",
         "brian2694/laravel-toastr": "^5.54",
-        "buzz/laravel-google-captcha": "^2.3",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
@@ -20,7 +19,8 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
-        "maatwebsite/excel": "^3.1"
+        "maatwebsite/excel": "^3.1",
+        "mostafaznv/recaptcha": "^1.1"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.7",
@@ -48,6 +48,9 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+        "files": [
+            "app/helpers.php"
         ]
     },
     "autoload-dev": {

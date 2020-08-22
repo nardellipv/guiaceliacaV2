@@ -40,7 +40,7 @@
     {{--@include('external.hotjar')--}}
     {{--@include('external.adsenses')--}}
     {{--@include('external.pixel')--}}
-    {{--{!! RecaptchaV3::initJs() !!}--}}
+    {!! Recaptcha::renderJs() !!}
 </head>
 <body itemscope>
 

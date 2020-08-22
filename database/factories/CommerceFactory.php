@@ -6,6 +6,8 @@ use App\Commerce;
 use Faker\Generator as Faker;
 
 $factory->define(Commerce::class, function (Faker $faker) {
+    $title = $faker->unique()->word(10);
+
     return [
         'name' => $title,
         'address' => $faker->address,
@@ -13,10 +15,8 @@ $factory->define(Commerce::class, function (Faker $faker) {
         'web' => $faker->url,
         'about' => $faker->text($maxNbChars = 500),
         'votes_positive' => rand(0, 100),
-        'votes_negative' => rand(0, 100),
         'visit' => rand(0, 100),
         'facebook' => 'https://www.facebook.com/celiacosmendozaOK',
-        'twitter' => 'https://twitter.com/nardellip',
         'instagram' => 'https://www.instagram.com/celiacosmendoza/',
         'logo' => '',
         'type' => $faker->randomElement($array = array('FREE','BASIC','CLASIC','PREMIUM')),

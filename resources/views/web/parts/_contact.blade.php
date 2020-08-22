@@ -30,27 +30,30 @@
                                 <div class="contact-form-inner">
                                     <h3 itemprop="headline">Si tienes alguna pregunta, duda o sugerencia, por favor
                                         Contactanos</h3>
-                                    <div id="message"></div>
                                     <form method="post" action="{{ route('MailContactToSite') }}">
                                         @csrf
+                                        {!! Recaptcha::field('contact') !!}
                                         <div class="row">
                                             <div class="col-md-12 col-sm-6 col-lg-12">
-                                                <input id="name" type="text" name="name" placeholder="Nombre" value="{{ old('name') }}" required>
+                                                <input id="name" type="text" name="name" placeholder="Nombre"
+                                                       value="{{ old('name') }}" required>
                                             </div>
                                             <div class="col-md-12 col-sm-6 col-lg-12">
-                                                <input id="email" type="email" name="email" placeholder="Email" value="{{ old('email') }}"
+                                                <input id="email" type="email" name="email" placeholder="Email"
+                                                       value="{{ old('email') }}"
                                                        required>
                                             </div>
                                             <div class="col-md-12 col-sm-12 col-lg-12">
-                                                <input type="text" name="subject" placeholder="Asunto" value="{{ old('subject') }}" required>
+                                                <input type="text" name="subject" placeholder="Asunto"
+                                                       value="{{ old('subject') }}" required>
                                             </div>
                                             <div class="col-md-12 col-sm-12 col-lg-12">
                                                 <textarea id="comments" name="messageText" placeholder="Mensaje"
                                                           required>{{ old('messageText') }}</textarea>
                                             </div>
-                                            {!! Captcha::display() !!}
                                             <div class="col-md-12 col-sm-12 col-lg-12">
-                                                <button class="brd-rd2" id="submit" type="submit">Enviar Mensaje</button>
+                                                <button class="brd-rd2" id="submit" type="submit">Enviar Mensaje
+                                                </button>
                                             </div>
                                         </div>
                                     </form>

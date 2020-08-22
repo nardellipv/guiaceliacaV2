@@ -9,6 +9,6 @@ $factory->define(CommentBlog::class, function (Faker $faker) {
     return [
         'message' => $faker->sentence($nbWords = 100, $variableNbWords = true),
         'user_id' => rand(1, 10),
-        'post_id' => rand(1, 50),
+        'blog_id' => rand(1, 50),
     ];
 });

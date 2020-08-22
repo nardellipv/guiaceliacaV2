@@ -19,8 +19,6 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->mediumText('description');
             $table->integer('price');
-            $table->integer('offer')->nullable();
-            $table->enum('available', ['YES', 'NO'])->default('NO');
             $table->string('photo')->nullable();
 
             //relaciones

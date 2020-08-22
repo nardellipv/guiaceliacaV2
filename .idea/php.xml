@@ -128,9 +128,8 @@
       <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
       <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
       <path value="$PROJECT_DIR$/vendor/beyondcode/laravel-query-detector" />
-      <path value="$PROJECT_DIR$/vendor/google/recaptcha" />
-      <path value="$PROJECT_DIR$/vendor/buzz/laravel-google-captcha" />
       <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/vendor/mostafaznv/recaptcha" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

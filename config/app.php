@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Argentina/Mendoza',
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -169,8 +169,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        'Buzz\LaravelGoogleCaptcha\CaptchaServiceProvider',
-
+        Mostafaznv\Recaptcha\RecaptchaServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -234,6 +233,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Recaptcha' => Mostafaznv\Recaptcha\Facades\Recaptcha::class,
     ],
 
 ];

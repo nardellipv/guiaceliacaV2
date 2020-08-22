@@ -25,7 +25,7 @@ class CreateCommentBlogsTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreignId('post_id')
+            $table->foreignId('blog_id')
                 ->constrained()
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
