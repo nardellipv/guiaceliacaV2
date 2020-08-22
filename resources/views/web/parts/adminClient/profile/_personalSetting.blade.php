@@ -32,18 +32,19 @@
                         <div class="profile-info-form-wrap">
 
                             <div class="row mrg20">
-                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="col-md-12 col-sm-12 col-lg-12">
                                     <label>Nombre <sup>*</sup></label>
                                     <input class="brd-rd3" type="text" name="name"
                                            placeholder="Nombre"
                                            value="{{ $user->name }}">
                                 </div>
-                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="col-md-12 col-sm-12 col-lg-12">
                                     <label>Apellido <sup>*</sup></label>
                                     <input class="brd-rd3" type="text" name="lastname"
                                            placeholder="Apellido"
                                            value="{{ $user->lastname }}">
                                 </div>
+                            </div>
                                 <div class="col-md-12 col-sm-12 col-lg-12">
                                     <label>Provincia <sup>*</sup></label>
                                     @if($user->type == 'OWNER')
@@ -82,7 +83,6 @@
                                                placeholder="Contraseña">
                                     </div>
                                 </div>
-                            </div>
                             <br><br><br>
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <div class="loc-srch">
@@ -90,7 +90,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                </div>
                 </div>
             </form>
         </div>

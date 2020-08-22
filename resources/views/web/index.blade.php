@@ -6,8 +6,8 @@
     @endif--}}
     @include('web.parts._services')
     @include('web.parts._steps')
-    @include('web.parts.landing._featured')
     @include('web.parts.landing._commercesListed')
+    @include('web.parts.landing._featured')
     @include('web.parts.landing._recentListed')
     @include('web.parts.landing._lastNews')
     {{--    @include('web.parts._submit')--}}

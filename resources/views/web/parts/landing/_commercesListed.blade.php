@@ -1,5 +1,5 @@
 <section>
-    <div class="block grayish low-opacity ">
+    <div class="block grayish low-opacity top-padd80">
         <div class="fixed-bg" style="background-image: url({{ asset('styleWeb/assets/images/pattern.png') }})"></div>
         <div class="container">
             <div class="row">

@@ -167,7 +167,6 @@ class ProfileCommerceController extends Controller
             'about' => $request['about'],
             'web' => $request['web'],
             'facebook' => $request['facebook'],
-            'twitter' => $request['twitter'],
             'instagram' => $request['instagram'],
 //            'type' => $request['type'],
             'slug' => Str::slug($request['name']),
@@ -271,11 +270,12 @@ class ProfileCommerceController extends Controller
             ->first();
 
 //        verifico si cambio el tipo de cuenta
-        if ($commerce->type != $request->type) {
+        $typeCommerce = 0;
+        /*if ($commerce->type != $request->type) {
             $typeCommerce = 1;
         } else {
             $typeCommerce = 0;
-        }
+        }*/
 
         $commerce->type = $request['type'];
         $commerce->fill($request->all())->save();

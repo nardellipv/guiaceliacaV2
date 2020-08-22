@@ -1,10 +1,10 @@
 <div class="tab-pane fade" id="profile-commerce">
     <div class="tabs-wrp account-settings brd-rd5">
         <h4 itemprop="headline">Perfil Comercial</h4>
-        <form class="profile-info-form" method="post"
-              action="{{ route('update.accountCommerce', $commerce) }}" enctype="multipart/form-data">
-            @csrf
-            <div class="account-settings-inner">
+        <div class="account-settings-inner">
+            <form class="profile-info-form" method="post"
+                  action="{{ route('update.accountCommerce', $commerce) }}" enctype="multipart/form-data">
+                @csrf
                 <div class="row">
                     <div class="col-md-4 col-sm-4 col-lg-4">
                         <div class="profile-info text-center">
@@ -38,24 +38,27 @@
                                            placeholder="Nombre Comercio"
                                            value="{{ $commerce->name }}" required>
                                 </div>
+
                                 <div class="col-md-12 col-sm-12 col-lg-12">
                                     <label>Sobre el Comercio <sup>*</sup></label>
                                     <textarea class="brd-rd3" id="about" name="about"
                                               required>{{ $commerce->about }}</textarea>
                                 </div>
+
                                 <div class="col-md-12 col-sm-12 col-lg-12">
                                     <label>Dirección <sup>*</sup></label>
                                     <input class="brd-rd3" type="text" name="address"
                                            placeholder="Dirección"
                                            value="{{ $commerce->address }}" required>
                                 </div>
-                                <div class="col-md-6 col-sm-6 col-lg-6">
+
+                                <div class="col-md-6 col-sm-12 col-lg-6">
                                     <label>Teléfono <sup>*</sup></label>
                                     <input class="brd-rd3" type="text" name="phone"
                                            placeholder="Teléfono"
                                            value="{{ $commerce->phone }}">
                                 </div>
-                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="col-md-6 col-sm-12 col-lg-6">
                                     <label>Provincia <sup>*</sup></label>
                                     <div class="select-wrp">
                                         <select name="province_id" required>
@@ -66,7 +69,8 @@
                                         </select>
                                     </div>
                                 </div>
-
+                            </div>
+                            <div class="row mrg20">
                                 <div class="col-md-12 col-sm-12 col-lg-12">
                                     <h4>Caracteristicas</h4>
                                     @foreach($characteristicsCommerce as $characteristicSelected)
@@ -88,7 +92,8 @@
                                         </div>
                                     @endforeach
                                 </div>
-
+                            </div>
+                            <div class="row mrg20">
                                 <div class="col-md-12 col-sm-12 col-lg-12">
                                     <h4>Medios de Pagos</h4>
                                     @foreach($paymentsCommerce as $paymentSelected)
@@ -110,7 +115,9 @@
                                         </div>
                                     @endforeach
                                 </div>
+                            </div>
 
+                            <div class="row mrg20">
                                 <div class="col-md-6 col-sm-6 col-lg-6">
                                     <label>Facebook </label>
                                     <input class="brd-rd3" type="text" name="facebook"
@@ -140,7 +147,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
