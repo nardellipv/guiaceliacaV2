@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Brian2694\Toastr\Facades\Toastr;
 use App\NewsLetter;
 use Illuminate\Http\Request;
 
@@ -14,7 +13,7 @@ class NewsLetterController extends Controller
             'email' => $request['email'],
         ]);
 
-        Toastr::info('Muchas gracias por darte de alta', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->info('Muchas gracias por darte de alta', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 }

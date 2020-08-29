@@ -1,9 +1,13 @@
-<p><img src="https://guiaceliaca.com.ar/images/img-logo.png" alt="" width="178" height="145" /></p>
+<p><p style="text-align: center;"><img src="https://guiaceliaca.com.ar/styleWeb/assets/images/img-logo.png"
+                                       alt="" width="100" height="100"/></p>
+<p style="text-align: center;"><img src="https://guiaceliaca.com.ar/styleWeb/imagesmail/logo.png" alt=""
+                                    width="193" height="49"/></p></p>
 <hr />
-<p>Hola,</p>
+<p>Holas,</p>
 <p><strong>Nombre:</strong>{{ $request->name }}</p>
 <p><strong>EMail:&nbsp;</strong>{{ $request->email }}</p>
-<p><strong>Mensaje:&nbsp;</strong>{{ $request->message }}</p>
+<p><strong>Asunto: </strong>{{ $request->subject }}</p>
+<p><strong>Mensaje:&nbsp;</strong>{{ $request->messageText }}</p>
 <p>Saludos,&nbsp;</p>
 <p>Gu&iacute;a Cel&iacute;aca</p>
 <hr />

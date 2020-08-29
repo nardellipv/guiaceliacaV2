@@ -33,13 +33,13 @@
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-    <script charset="UTF-8" src="//web.webpushs.com/js/push/a8a601343f2d3dfd2a0271f54f8260d6_1.js" async></script>
     @yield('style')
-
-    {{--@include('external.analytics')--}}
+    @toastr_css
+{{--    @include('external.analytics')--}}
     {{--@include('external.hotjar')--}}
     {{--@include('external.adsenses')--}}
     {{--@include('external.pixel')--}}
+    {{--@include('external.onesignal')--}}
     {!! Recaptcha::renderJs() !!}
 </head>
 <body itemscope>
@@ -69,8 +69,6 @@
     @if(!Request()->cookie('login'))
         {{ Cookie::queue('ingreso', 'sin_ingreso', '2628000') }}
     @endif
-
-    {!! Toastr::message() !!}
 
     @include('web.parts._menuWeb')
 
@@ -103,6 +101,9 @@
 
 
 @yield('script')
+@jquery
+@toastr_js
+@toastr_render
 
 <script src="{{ asset('styleWeb/assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('styleWeb/assets/js/bootstrap.min.js') }}"></script>

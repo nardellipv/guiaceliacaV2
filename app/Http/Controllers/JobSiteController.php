@@ -130,7 +130,7 @@ class JobSiteController extends Controller
             $msj->to($email);
         });
 
-        Toastr::info('Muchas Gracias, le estamos enviando la invitación al local', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->info('Muchas Gracias, le estamos enviando la invitación al local', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return redirect('/');
     }
 

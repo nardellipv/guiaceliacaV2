@@ -58,7 +58,7 @@
     <!--Page Load Progress Bar [ OPTIONAL ]-->
     <link href="{{ asset('styleAdmin/plugins/pace/pace.min.css') }}" rel="stylesheet">
     <script src="{{ asset('styleAdmin/plugins/pace/pace.min.js') }}"></script>
-
+    @toastr_css
 
 </head>
 
@@ -81,7 +81,6 @@
         <!--CONTENT CONTAINER-->
         <!--===================================================-->
         <div id="content-container">
-        {!! Toastr::message() !!}
 
             <!--Page Title-->
 
@@ -136,7 +135,9 @@
 
 <!--JAVASCRIPT-->
 <!--=================================================-->
-
+@jquery
+@toastr_js
+@toastr_render
 <!--jQuery [ REQUIRED ]-->
 <script src="{{ asset('styleAdmin/js/jquery-2.1.1.min.js') }}"></script>
 

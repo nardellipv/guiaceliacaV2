@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\AdminClient;
 
-use Brian2694\Toastr\Facades\Toastr;
 use App\Category;
 use App\Commerce;
 use App\Http\Requests\ProductCreateRequest;
@@ -59,7 +58,7 @@ class ProductController extends Controller
 
         $commerce->save();
 
-        Toastr::success('Producto creado correctamente', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Producto creado correctamente', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 
@@ -68,7 +67,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->delete();
 
-        Toastr::success('Producto Eliminado', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Producto Eliminado', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 }

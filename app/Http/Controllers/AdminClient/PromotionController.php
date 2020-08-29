@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\AdminClient;
 
-use Brian2694\Toastr\Facades\Toastr;
 use App\Commerce;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PromotionCreateRequest;
@@ -104,7 +103,7 @@ class PromotionController extends Controller
             'commerce_id' => $commerceId->id,
         ]);
 
-        Toastr::success('Promoción creada correctamente', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Promoción creada correctamente', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 
@@ -117,7 +116,7 @@ class PromotionController extends Controller
         $path = 'users/images/' . Auth::user()->id . '/voucher/' . $promotion->percentage . '-' . $promotion->end_date . '.jpg';
         file::delete($path);
 
-        Toastr::success('Promoción Eliminada', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Promoción Eliminada', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 }

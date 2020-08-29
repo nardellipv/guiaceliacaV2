@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Brian2694\Toastr\Facades\Toastr;
 use App\Blog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -52,7 +51,7 @@ class AdminBlogController extends Controller
 
         $blog->save();
 
-        Toastr::success('Post creado correctamente', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Post creado correctamente', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 
@@ -89,7 +88,7 @@ class AdminBlogController extends Controller
 
         $blog->save();
 
-        Toastr::success('Post editado correctamente', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Post editado correctamente', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 
@@ -99,7 +98,7 @@ class AdminBlogController extends Controller
         $post->status = 'ACTIVE';
         $post->save();
 
-        Toastr::success('Post Activado', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Post Activado', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 
@@ -109,7 +108,7 @@ class AdminBlogController extends Controller
         $post->status = 'DESACTIVE';
         $post->save();
 
-        Toastr::success('Post Desactivado', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Post Desactivado', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 }

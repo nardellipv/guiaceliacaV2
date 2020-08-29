@@ -10,7 +10,6 @@ use App\Payment_commerce;
 use App\Price;
 use App\Product;
 use App\Promotion;
-use Brian2694\Toastr\Facades\Toastr;
 use App\Commerce;
 use App\Http\Requests\CreateProfileCommerceRequest;
 use App\Http\Requests\ProfileUserRequest;
@@ -141,7 +140,7 @@ class ProfileCommerceController extends Controller
             $commerce->save();
         }
 
-        Toastr::success('Se modificó correctamente su perfil', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Se modificó correctamente su perfil', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 
@@ -151,7 +150,7 @@ class ProfileCommerceController extends Controller
         $characteristics = Characteristic::all();
         $payments = Payment::all();
 
-        Toastr::info('Por favor complete todos los datos para crear la cuenta', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->info('Por favor complete todos los datos para crear la cuenta', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return view('web.parts.adminClient.profile._create-profile-commerce', compact('provinces', 'characteristics', 'payments'));
     }
 
@@ -236,7 +235,7 @@ class ProfileCommerceController extends Controller
 
         $commerce->save();
 
-        Toastr::success('Perfil de la cuenta creada correctamente', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Perfil de la cuenta creada correctamente', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return redirect()->action('AdminClient\ProfileCommerceController@profileCommerce');
     }
 
@@ -344,7 +343,7 @@ class ProfileCommerceController extends Controller
 
 //        Si elige o free o premium nos contactamos con el cliente
         if ($commerce->type == 'FREE') {
-            Toastr::success('Perfil actualizado correctamente.', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+            toastr()->success('Perfil actualizado correctamente.', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
             return back();
         } elseif ($commerce->type == 'Premium') {
 
@@ -354,12 +353,12 @@ class ProfileCommerceController extends Controller
                 $msj->to('nardellipv@gmail.com');
             });
 
-            Toastr::success('Perfil actualizado correctamente. Nos estaremos contactando a la brevedad.', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+            toastr()->success('Perfil actualizado correctamente. Nos estaremos contactando a la brevedad.', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
             return back();
         }
 
         if ($typeCommerce == 0) {
-            Toastr::success('Perfil actualizado correctamente.', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+            toastr()->success('Perfil actualizado correctamente.', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
             return back();
         } else {
 
@@ -405,7 +404,7 @@ class ProfileCommerceController extends Controller
 
         $characteristic->delete();
 
-        Toastr::success('Caracteristica Eliminada', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Caracteristica Eliminada', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 
@@ -415,7 +414,7 @@ class ProfileCommerceController extends Controller
 
         $payment->delete();
 
-        Toastr::success('Medio de Pago Eliminado', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Medio de Pago Eliminado', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 }

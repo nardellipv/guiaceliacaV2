@@ -30,7 +30,7 @@ class EmailController extends Controller
 
         Mail::to($commerce->user->email)->send(new MessageClientToCommerce($commerce));
 
-        Toastr::success('Se envio correctamente tu mensaje, muchas gracias', 'Mensaje Enviado!', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Se envio correctamente tu mensaje, muchas gracias', 'Mensaje Enviado!', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 
@@ -38,15 +38,22 @@ class EmailController extends Controller
     {
         Mail::to('info@guiaceliaca.com.ar')->send(new MailClientContact($request));
 
-        Toastr::success('Se envio correctamente tu mensaje, muchas gracias, en breve te contestaremos.', 'Mensaje Enviado!', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Se envio correctamente tu mensaje, muchas gracias, en breve te contestaremos.', 'Mensaje Enviado!', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 
     public function respondToClient(RespondCommerceToClientMessage $messageCommerce)
     {
+        $message = Message::where('id', $messageCommerce->id)
+            ->first();
+
+        $message->read = 'YES';
+        $message->save();
+
+
         Mail::to($messageCommerce->clientMail)->send(new RespondCommerceToClient($messageCommerce));
 
-        Toastr::success('Se envio correctamente tu mensaje, muchas gracias, en breve te contestaremos.', 'Mensaje Enviado!', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Se envio correctamente tu mensaje, muchas gracias.', 'Mensaje Enviado!', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 }

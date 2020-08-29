@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Brian2694\Toastr\Facades\Toastr;
 use App\Blog;
 use App\CommentBlog;
 use App\Commerce;
@@ -65,7 +64,7 @@ class BlogController extends Controller
             'post_id' => $commentPost->id,
         ]);
 
-        Toastr::info('Muchas gracias por comentar', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->info('Muchas gracias por comentar', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 
@@ -74,7 +73,7 @@ class BlogController extends Controller
         Blog::where('id', $id)
             ->increment('like', 1);
 
-        Toastr::info('Muchas gracias por tu voto', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->info('Muchas gracias por tu voto', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 }

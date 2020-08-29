@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\AdminClient;
 
-use Brian2694\Toastr\Facades\Toastr;
 use App\Category;
 use App\Http\Requests\RecipesClientCreateRequest;
 use App\Recipe;
@@ -68,7 +67,7 @@ class RecipeController extends Controller
         }
         $recipe->save();
 
-        Toastr::success('Receta creada correctamente', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Receta creada correctamente', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 }

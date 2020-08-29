@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\AdminClient;
 
-use Brian2694\Toastr\Facades\Toastr;
 use App\Comment;
 use App\Commerce;
 use App\Http\Controllers\Controller;
@@ -32,7 +31,7 @@ class CommentController extends Controller
 
         Mail::to('info@guiaceliaca.com.ar')->send(new complaintMessage($comment));
 
-        Toastr::success('Mensaje reportado. Se revisará el mensaje y actuaremos en consecuencia', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Mensaje reportado. Se revisará el mensaje y actuaremos en consecuencia', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 }

@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers\AdminClient;
 
-use Brian2694\Toastr\Facades\Toastr;
-use App\Commerce;
 use App\Message;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
@@ -26,7 +23,7 @@ class MessageController extends Controller
         $message = Message::find($id);
         $message->delete();
 
-        Toastr::success('Mensaje Eliminado', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Mensaje Eliminado', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 }

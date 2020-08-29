@@ -6,7 +6,9 @@
                 <form method="post" action="{{ route('respondToClient') }}">
                     @csrf
                     <div class="review-box brd-rd5">
-                        <h4 itemprop="headline">{{ Str::limit($message->name,30) }}</h4> <span><a href="{{ route('message.delete', $message) }}"><i class="icon fa fa-trash" style="color: red"></i></a></span>
+                        <h4 itemprop="headline">{{ Str::limit($message->name,30) }}</h4> <span><a
+                                    href="{{ route('message.delete', $message) }}"><i class="icon fa fa-trash"
+                                                                                      style="color: red"></i></a></span>
                         <br>
                         <p itemprop="description">{{ $message->messageText }}</p>
                         <br><br>
@@ -26,6 +28,7 @@
                         </div>
                         <input name="clientMail" value="{{ $message->email }}" hidden readonly>
                         <input name="name" value="{{ $message->name }}" hidden readonly>
+                        <input name="id" value="{{ $message->id }}" hidden readonly>
                     </div>
                 </form>
             @endforeach

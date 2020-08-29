@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Characteristic_commerce;
 use App\Payment_commerce;
-use Brian2694\Toastr\Facades\Toastr;
 use App\Comment;
 use App\Commerce;
 use App\Product;
@@ -56,7 +55,7 @@ class CommerceController extends Controller
             ->first();
 
         if (Cookie::get('voto' . $commerce->slug) == $slug) {
-            Toastr::info('Ya votaste anteriormente a este comercio', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+            toastr()->info('Ya votaste anteriormente a este comercio', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
             return back();
         }
 
@@ -65,7 +64,7 @@ class CommerceController extends Controller
 
         Cookie::queue('voto' . $commerce->slug, $commerce->slug, '2628000');
 
-        Toastr::success('Muchas gracias por tu voto', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Muchas gracias por tu voto', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Brian2694\Toastr\Facades\Toastr;
 use App\Comment;
 use App\Commerce;
 use App\Http\Requests\CommentToCommerceRequest;
@@ -24,7 +23,7 @@ class CommentController extends Controller
             'commerce_id' => $commerce->id
         ]);
 
-        Toastr::success('Comentario ingresado correctamente', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
+        toastr()->success('Comentario ingresado correctamente', '', ["positionClass" => "toast-top-right", "progressBar" => "true"]);
         return back();
     }
 }
