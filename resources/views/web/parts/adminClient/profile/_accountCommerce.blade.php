@@ -95,7 +95,6 @@
                                                         </div>
                                                     </div>
                                                 @endif
-
                                             </div>
                                             @if(Auth::user()->type == 'OWNER')
                                                 @include('web.parts.adminClient.profile._profile-commerce')
@@ -115,5 +114,4 @@
             </div>
         </div>
     </section>
-
 @endsection

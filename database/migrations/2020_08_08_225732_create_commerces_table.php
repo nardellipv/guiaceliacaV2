@@ -42,6 +42,7 @@ class CreateCommercesTable extends Migration
                 ->onUpdate('cascade');
 
             $table->foreignId('region_id')
+                ->nullable()
                 ->constrained()
                 ->onDelete('cascade')
                 ->onUpdate('cascade');

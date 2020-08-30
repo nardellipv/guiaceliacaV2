@@ -67,16 +67,16 @@ class ProfileCommerceController extends Controller
 
             $products = Product::where('commerce_id', $commerceId->id)
                 ->get();
+
+            $provinces = Province::all();
+            $characteristics = Characteristic::all();
+            $payments = Payment::all();
+            $categories = Category::all();
         }
 
         /*$commercesPro = Commerce::with(['user', 'province'])
             ->where('type', 'PREMIUM')
             ->get();*/
-
-        $provinces = Province::all();
-        $characteristics = Characteristic::all();
-        $payments = Payment::all();
-        $categories = Category::all();
 
         if (!Cookie::get('lastLogin')) {
             $lastLogin = User::find(Auth::user()->id);
@@ -167,7 +167,7 @@ class ProfileCommerceController extends Controller
             'web' => $request['web'],
             'facebook' => $request['facebook'],
             'instagram' => $request['instagram'],
-//            'type' => $request['type'],
+            'type' => 'FREE',
             'slug' => Str::slug($request['name']),
             'user_id' => Auth::user()->id,
             'province_id' => $request['province_id'],
