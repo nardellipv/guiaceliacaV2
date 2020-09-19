@@ -32,7 +32,6 @@
                                         Contactanos</h3>
                                     <form method="post" action="{{ route('MailContactToSite') }}">
                                         @csrf
-                                        {!! Recaptcha::field('contact') !!}
                                         <div class="row">
                                             <div class="col-md-12 col-sm-6 col-lg-12">
                                                 <input id="name" type="text" name="name" placeholder="Nombre"
@@ -50,6 +49,7 @@
                                             <div class="col-md-12 col-sm-12 col-lg-12">
                                                 <textarea id="comments" name="messageText" placeholder="Mensaje"
                                                           required>{{ old('messageText') }}</textarea>
+                                                {!! htmlFormSnippet() !!}
                                             </div>
                                             <div class="col-md-12 col-sm-12 col-lg-12">
                                                 <button class="brd-rd2" id="submit" type="submit">Enviar Mensaje

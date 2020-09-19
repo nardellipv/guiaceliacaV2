@@ -120,8 +120,8 @@
       <path value="$PROJECT_DIR$/vendor/juanparati/sendinblue" />
       <path value="$PROJECT_DIR$/vendor/beyondcode/laravel-query-detector" />
       <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
-      <path value="$PROJECT_DIR$/vendor/mostafaznv/recaptcha" />
       <path value="$PROJECT_DIR$/vendor/yoeunes/toastr" />
+      <path value="$PROJECT_DIR$/vendor/biscolab/laravel-recaptcha" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

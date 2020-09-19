@@ -27,6 +27,7 @@ class MessageClienteToCommerceRequest extends FormRequest
             'name' => 'required',
             'email' => 'required | email',
             'messageText' => 'required | min:10',
+            'g-recaptcha-response' => 'recaptcha',
         ];
     }
 
@@ -38,6 +39,7 @@ class MessageClienteToCommerceRequest extends FormRequest
             'email.email' => 'El email debe ser valido',
             'messageText.required' => 'El mensaje es requerido',
             'messageText.min' => 'El mensaje debe ser más largo',
+            'g-recaptcha-response.recaptcha' => 'El captcha es necesario.'
         ];
     }
 }

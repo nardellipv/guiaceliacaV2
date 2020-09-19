@@ -50,7 +50,6 @@
                                                 </div>
 
 
-
                                                 <div class="restaurant-detail-tabs">
                                                     <ul class="nav nav-tabs">
                                                         <li class="active"><a href="#tab1-1" data-toggle="tab"><i
@@ -117,41 +116,29 @@
 
 @section('script')
     <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+    <script type="application/ld+json">
+        {
+          "@context" : "http://schema.org",
+          "@type" : "Restaurant",
+          "name" : "{{ $commerce->name }}",
+          @if ($commerce->logo)
+                    "image" : "{{ 'https://guiaceliaca.com.ar/users/images/' . $commerce->user->id . '/comercio/358x250-'. $commerce->logo }}",
+          @else
+                    "image" : "https://guiaceliaca.com.ar/images/img-logo.png",
+        @endif
+                "telephone" : "{{ $commerce->phone }}",
+          "address" : {
+            "@type" : "PostalAddress",
+            "streetAddress" : "{{ $commerce->address }}",
+            "addressRegion" : "{{ $commerce->province->name }}"
+            },
+            "aggregateRating" : {
+              "@type" : "AggregateRating",
+              "ratingValue" : "Votos",
+              "bestRating" : "{{$commerce->votes_positive }}",
+              "ratingCount" : "{{$commerce->votes_positive + $commerce->votes_negative}}"
+            }
+          }
+    </script>
 @endsection
-
-<script type="application/ld+json">
-{
-  "@context" : "http://schema.org",
-  "@type" : "Restaurant",
-  "name" : "{{ $commerce->name }}",
-  @if ($commerce->logo)
-        "image" : "{{ 'https://guiaceliaca.com.ar/users/images/' . $commerce->user->id . '/comercio/358x250-'. $commerce->logo }}",
-  @else
-        "image" : "https://guiaceliaca.com.ar/images/img-logo.png",
-@endif
-    "telephone" : "{{ $commerce->phone }}",
-  "address" : {
-    "@type" : "PostalAddress",
-    "streetAddress" : "{{ $commerce->address }}",
-    "addressRegion" : "{{ $commerce->province->name }}"
-    },
-    "aggregateRating" : {
-      "@type" : "AggregateRating",
-      "ratingValue" : "Votos",
-      "bestRating" : "{{$commerce->votes_positive }}",
-      "ratingCount" : "{{$commerce->votes_positive + $commerce->votes_negative}}"
-    }
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-</script>

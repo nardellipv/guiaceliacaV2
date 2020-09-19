@@ -168,7 +168,6 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
-        Mostafaznv\Recaptcha\RecaptchaServiceProvider::class,
         Yoeunes\Toastr\ToastrServiceProvider::class,
         /*
          * Application Service Providers...
@@ -232,7 +231,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
-        'Recaptcha' => Mostafaznv\Recaptcha\Facades\Recaptcha::class,
     ],
 
 ];

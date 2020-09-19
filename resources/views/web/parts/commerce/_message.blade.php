@@ -25,6 +25,7 @@
                                 class="fa fa-pencil"></i>
                         <textarea placeholder="Mensaje" name="messageText"></textarea>
                     </div>
+                    {!! htmlFormSnippet() !!}
                 </div>
                 <div class="col-md-12 col-sm-12 col-lg-12">
                     <button class="brd-rd2 red-bg"
