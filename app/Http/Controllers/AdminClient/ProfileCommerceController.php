@@ -163,6 +163,7 @@ class ProfileCommerceController extends Controller
             'name' => $request['name'],
             'address' => $request['address'],
             'phone' => $request['phone'],
+            'phoneWsp' => $request['phoneWsp'],
             'about' => $request['about'],
             'web' => $request['web'],
             'facebook' => $request['facebook'],

@@ -2,14 +2,6 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="4d2976c1-3e64-4542-ae7f-6b91445bba4c" name="guiaML" url="http://ftp.guiaceliaca.ml">
-        <fileTransfer host="ftp.guiaceliaca.ml" port="21">
-          <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" />
-          </advancedOptions>
-          <option name="port" value="21" />
-        </fileTransfer>
-      </webServer>
       <webServer id="838fab98-b61f-4545-a749-3aee6aa7fa18" name="guiaceliaca" url="http://ftp.guiaceliaca.com.ar">
         <fileTransfer host="ftp.guiaceliaca.com.ar" port="21">
           <advancedOptions>

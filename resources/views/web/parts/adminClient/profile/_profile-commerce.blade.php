@@ -59,6 +59,13 @@
                                            value="{{ $commerce->phone }}">
                                 </div>
                                 <div class="col-md-6 col-sm-12 col-lg-6">
+                                    <label>Whatsapp </label>
+                                    <input class="brd-rd3" type="text" name="phoneWsp"
+                                           placeholder="Whatsapp (sin 0 ni 15)"
+                                           value="{{ $commerce->phoneWsp }}">
+                                </div>
+
+                                <div class="col-md-12 col-sm-12 col-lg-12">
                                     <label>Provincia <sup>*</sup></label>
                                     <div class="select-wrp">
                                         <select name="province_id" required>

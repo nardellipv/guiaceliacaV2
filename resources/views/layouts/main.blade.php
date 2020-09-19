@@ -35,11 +35,11 @@
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
     @yield('style')
     @toastr_css
-    @include('external.analytics')
+{{--    @include('external.analytics')--}}
 {{--    @include('external.hotjar')--}}
-    @include('external.adsenses')
-    @include('external.pixel')
-    @include('external.onesignal')
+    {{--@include('external.adsenses')--}}
+    {{--@include('external.pixel')--}}
+    {{--@include('external.onesignal')--}}
     {!! htmlScriptTagJsApi() !!}
 </head>
 <body itemscope>

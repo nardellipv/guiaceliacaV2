@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Commerce extends Model
 {
     protected $fillable = [
-        'name', 'address', 'phone', 'web', 'twitter', 'instagram', 'facebook', 'logo', 'slug', 'about', 'votes_positive', 'votes_negative',
+        'name', 'address', 'phone', 'phoneWsp', 'web', 'twitter', 'instagram', 'facebook', 'logo', 'slug', 'about', 'votes_positive', 'votes_negative',
         'user_id', 'province_id', 'region_id'
     ];
 

@@ -12,6 +12,7 @@ $factory->define(Commerce::class, function (Faker $faker) {
         'name' => $title,
         'address' => $faker->address,
         'phone' => $faker->phoneNumber,
+        'phoneWsp' => '2615965966',
         'web' => $faker->url,
         'about' => $faker->text($maxNbChars = 500),
         'votes_positive' => rand(0, 100),

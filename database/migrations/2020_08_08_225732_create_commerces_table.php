@@ -19,6 +19,7 @@ class CreateCommercesTable extends Migration
             $table->string('name')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
+            $table->string('phoneWsp')->nullable();
             $table->mediumText('about')->nullable();
             $table->integer('votes_positive')->default(0)->nullable();
             $table->integer('visit')->default(0);

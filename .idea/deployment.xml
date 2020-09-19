@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="guiaML">
+  <component name="PublishConfigData" serverName="guiaceliaca">
     <serverData>
-      <paths name="guiaML">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/guia" local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
       <paths name="guiaceliaca">
         <serverdata>
           <mappings>
