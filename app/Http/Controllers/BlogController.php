@@ -16,7 +16,7 @@ class BlogController extends Controller
             ->orderBy('created_at', 'DESC')
             ->paginate(5);
 
-        $commercesPro = Commerce::with(['user', 'province'])
+              $commercesPro = Commerce::with(['user', 'province'])
             ->where('type', 'CLASIC')
             ->get();
 

@@ -36,8 +36,7 @@
                                     <h4 class="widget-title" itemprop="headline">Mantenete en contacto</h4>
                                     <ul>
                                         <li><i class="fa fa-map-marker"></i> Mendoza, Argentina</li>
-                                        <li><i class="fa fa-envelope"></i> <a href="#" title="" itemprop="url">info@guiaceliaca.com.ar</a>
-                                        </li>
+                                        <li><i class="fa fa-envelope"></i> info@guiaceliaca.com.ar</li>
                                     </ul>
                                 </div>
                             </div>

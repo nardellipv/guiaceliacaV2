@@ -29,7 +29,7 @@ class JobSiteController extends Controller
         }
 
         if (count($sendPost) > 0) {
-            foreach ($emails as $email) {
+            foreach ($emails as $email) {        
                 Mail::send('emails.mailNews', ['email' => $email, 'sendPost' => $sendPost], function ($msj) use ($email, $sendPost) {
                     $msj->from('no-responder@guiaceliaca.com.ar', 'GuiaCeliaca');
                     $msj->subject('Novedades del mes');

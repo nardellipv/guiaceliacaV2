@@ -14,7 +14,7 @@
                         <div class="sec-box">
                             <div class="filters-wrapper">
                                 <ul class="filter-buttons center">
-                                    <li class="active"><a class="brd-rd30" data-filter="*" href="#"
+                                     <li class="active"><a class="brd-rd30" data-filter="*" href="#"
                                                           itemprop="url">Todos</a></li>
                                     @foreach($categories as $category)
                                         <li><a class="brd-rd30" data-filter=".filter-item{{$category->id}}" href="#"

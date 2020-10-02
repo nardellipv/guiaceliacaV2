@@ -54,6 +54,16 @@
                     <span>Sin Instagram</span>
                 @endif
             </li>
+            <li>
+                <i class="fa fa-whatsapp red-clr"></i>
+                <strong>Whatsapp</strong>
+                @if($commerce->phoneWsp)
+                    <a class="brd-rd3" href="https://web.whatsapp.com/send?phone=549{{ $commerce->phoneWsp }}&text=Hola%2C%20te%20contacto%20desde%20guiaceliaca.com.ar%20Link-%3E%20%20https://guiaceliaca.com.ar/{{ $commerce->slug }}"
+                             target="_blank">Enviar mensaje</a>
+                @else
+                    <span>Sin Whatsapp</span>
+                @endif
+            </li>
         </ul>
     </div>
 </div>

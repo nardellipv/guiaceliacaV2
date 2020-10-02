@@ -3,7 +3,7 @@
 <p style="text-align: center;"><img src="https://guiaceliaca.com.ar/styleWeb/imagesmail/logo.png" alt=""
                                     width="193" height="49"/></p></p>
 <hr />
-<p>Holas,</p>
+<p>Hola,</p>
 <p><strong>Nombre:</strong>{{ $request->name }}</p>
 <p><strong>EMail:&nbsp;</strong>{{ $request->email }}</p>
 <p><strong>Asunto: </strong>{{ $request->subject }}</p>
